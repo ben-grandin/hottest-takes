@@ -1,6 +1,9 @@
 import clsx from 'clsx';
+import { memo } from 'react';
+import { useActions } from '../hooks';
 
-const User = ({ user, className, children }) => {
+const User = ({ user, className }) => {
+  const { removeUser } = useActions();
   return (
     <article
       className={clsx(
@@ -14,9 +17,14 @@ const User = ({ user, className, children }) => {
         </div>
         <div className="font-normal text-primary-800">@{user.username}</div>
       </div>
-      {children}
+      <button
+        className="px-1 py-0 font-normal"
+        onClick={() => removeUser(user.id)}
+      >
+        Remove
+      </button>
     </article>
   );
 };
 
-export default User;
+export default memo(User);

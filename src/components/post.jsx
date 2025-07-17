@@ -1,6 +1,7 @@
 import AddComment from './add-comment';
 import PostComment from './comment';
 import { useActions } from '../hooks';
+import { memo } from 'react';
 
 const Post = ({ post }) => {
   const { removePost } = useActions();
@@ -30,4 +31,4 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post;
+export default memo(Post);
